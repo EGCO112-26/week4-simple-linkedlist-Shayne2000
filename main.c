@@ -108,7 +108,7 @@ y.value = 123 ;
  /*  Exercise V Use malloc to create all nodes, instead of create a struct!!
          //use a loop to help
           
-     */
+     *///
     int n = 10 ;
     struct node *p,*h ;
     h = (struct node*)malloc(sizeof(struct node));
