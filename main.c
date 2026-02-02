@@ -8,12 +8,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "node.h"
+#include <string.h>
 
 void show (struct node z) {
     struct node *test ;
     test = &z ;
-    while (test != NULL){
+    while (test->next != NULL){
         printf("%d\n",test->value);
+        test = test->next ;
+    }
+}
+
+
+
+struct studentNode
+{
+    int id ;
+    char name[30] ;
+    struct studentNode *next;
+};
+
+void showName (struct studentNode z) {
+    struct studentNode *test ;
+    test = &z ;
+    while (test->next != NULL){
+        printf("%d %s\n",test->id,test->name);
         test = test->next ;
     }
 }
@@ -104,7 +123,7 @@ y.value = 123 ;
 
         p = p->next ;
     }p->value = 55 ;
-    show(*h);
+    // show(*h);
 
 
 
@@ -127,10 +146,29 @@ y.value = 123 ;
     // show(*h);
 
 
+
+    struct studentNode *P,*H ;
+
+    H = (struct StudentNode *)malloc(sizeof(struct studentNode)) ;
+    P = H ;
+    for (int i = 1 ; i < argc ; i ++) {
+        P->id = i-1 ;
+        strcpy(P->name,argv[i]);
+        P->next = (struct StudentNode *)malloc(sizeof(struct studentNode)) ;
+
+        P = P->next ;
+    }
+
+    showName(*H);
+
+
     
+    for (int i = 0 ; i < argc ; i ++){
+        P = H->next ;
+        free(H);
 
-
-
+        H = P ;
+    }
 
 
 
