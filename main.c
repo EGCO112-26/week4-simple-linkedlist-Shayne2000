@@ -151,9 +151,9 @@ y.value = 123 ;
 
     H = (struct StudentNode *)malloc(sizeof(struct studentNode)) ;
     P = H ;
-    for (int i = 1 ; i < argc ; i ++) {
-        P->id = i-1 ;
-        strcpy(P->name,argv[i]);
+    for (int i = 1 ; i < (argc+1)/2 ; i ++) {
+        P->id = atoi(argv[(i-1)*2+1]);
+        strcpy(P->name,argv[(i-1)*2+2]);
         P->next = (struct StudentNode *)malloc(sizeof(struct studentNode)) ;
 
         P = P->next ;
@@ -163,7 +163,7 @@ y.value = 123 ;
 
 
     
-    for (int i = 0 ; i < argc ; i ++){
+    for (int i = 0 ; i < argc/2 ; i ++){
         P = H->next ;
         free(H);
 
